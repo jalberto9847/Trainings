@@ -8,7 +8,7 @@ let skiData = {
   goal: 100
 }
 
-class SkiDayCounter extends React.Component {
+class SkiDayCounter extends Component {
   render() {
     const {total, powder, backcountry, goal} = this.props
     return (
