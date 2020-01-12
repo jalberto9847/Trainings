@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.column "first_name", :sintrg, :limit => 25
       t.string "last_name", :limit => 50
       t.string "email", :default => '', :null => false
-      t.string "passdown", :limit => 40
+      t.string "password", :limit => 40
 
       t.timestamps
       #t.datetime "created_at"
