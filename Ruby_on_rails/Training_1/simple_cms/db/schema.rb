@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_12_205054) do
+ActiveRecord::Schema.define(version: 2020_01_16_011921) do
 
   create_table "admin_users", force: :cascade do |t|
     t.integer "first_name"
@@ -21,6 +21,38 @@ ActiveRecord::Schema.define(version: 2020_01_12_205054) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "username", limit: 25
     t.index ["username"], name: "index_admin_users_on_username"
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.integer "subject_id"
+    t.string "name"
+    t.string "permalink"
+    t.integer "position"
+    t.boolean "visible", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["permalink"], name: "index_pages_on_permalink"
+    t.index ["subject_id"], name: "index_pages_on_subject_id"
+  end
+
+  create_table "sections", force: :cascade do |t|
+    t.integer "page_id"
+    t.string "name"
+    t.integer "position"
+    t.boolean "visible", default: false
+    t.string "content_type"
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["page_id"], name: "index_sections_on_page_id"
+  end
+
+  create_table "subjects", force: :cascade do |t|
+    t.string "name"
+    t.integer "position"
+    t.boolean "visible", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
